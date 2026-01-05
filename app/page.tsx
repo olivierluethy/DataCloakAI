@@ -20,6 +20,7 @@ import { Footer } from "@/components/footer"
 import { setupScrollTracking, trackSectionView } from "@/lib/analytics"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
+import { PurchaseNotification } from "@/components/purchase-notification"
 
 export default function Home() {
   const [showExitIntent, setShowExitIntent] = useState(false)
@@ -103,6 +104,7 @@ export default function Home() {
           </Button>
         </DialogContent>
       </Dialog>
+      <PurchaseNotification />
     </main>
   )
 }
