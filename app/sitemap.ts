@@ -3,49 +3,49 @@ import type { MetadataRoute } from "next"
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://datacloak.ai",
+      url: "https://datacloakai.com",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: "https://datacloak.ai/privacy-policy",
+      url: "https://datacloakai.com/privacy-policy",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: "https://datacloak.ai/terms-of-service",
+      url: "https://datacloakai.com/terms-of-service",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: "https://datacloak.ai/blog",
+      url: "https://datacloakai.com/blog",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: "https://datacloak.ai/blog/anonymize-data-for-ai-models",
+      url: "https://datacloakai.com/blog/anonymize-data-for-ai-models",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: "https://datacloak.ai/blog/gdpr-ai-compliance",
+      url: "https://datacloakai.com/blog/gdpr-ai-compliance",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: "https://datacloak.ai/blog/preventing-data-leaks-ai",
+      url: "https://datacloakai.com/blog/preventing-data-leaks-ai",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: "https://datacloak.ai/contact",
+      url: "https://datacloakai.com/contact",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,

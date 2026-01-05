@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     userScalable: true,
   },
   alternates: {
-    canonical: "https://datacloak.ai",
+    canonical: "https://datacloakai.com",
     languages: {
-      "en-US": "https://datacloak.ai",
+      "en-US": "https://datacloakai.com",
     },
   },
   openGraph: {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description:
       "Automatically anonymize sensitive data before sending to AI models like ChatGPT or Claude. Protect privacy, ensure GDPR compliance, and prevent data leaks.",
     type: "website",
-    url: "https://datacloak.ai",
+    url: "https://datacloakai.com",
     siteName: "DataCloak AI",
     images: [
       {
@@ -80,6 +80,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <link rel="preload" href="/og-image.png" as="image" type="image/png" />
+        <meta name="robots" content="index, follow" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)" />
@@ -97,7 +98,7 @@ export default function RootLayout({
                   "@type": "ListItem",
                   position: 1,
                   name: "Home",
-                  item: "https://datacloak.ai",
+                  item: "https://datacloakai.com",
                 },
               ],
             }),
@@ -121,7 +122,7 @@ export default function RootLayout({
                 price: "39",
                 priceCurrency: "EUR",
               },
-              url: "https://datacloak.ai",
+              url: "https://datacloakai.com",
               aggregateRating: {
                 "@type": "AggregateRating",
                 ratingValue: "4.9",
@@ -176,7 +177,7 @@ export default function RootLayout({
             }),
           }}
         />
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" strategy="afterInteractive" />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-9BCQMW8HZ7" strategy="afterInteractive" />
         <Script
           id="gtag-init"
           strategy="afterInteractive"
@@ -188,7 +189,7 @@ export default function RootLayout({
                 'analytics_storage': 'denied',
                 'ad_storage': 'denied'
               });
-              gtag('config', 'G-XXXXXXXXXX', {
+              gtag('config', 'G-9BCQMW8HZ7', {
                 'anonymize_ip': true,
                 'allow_google_signals': false
               });
