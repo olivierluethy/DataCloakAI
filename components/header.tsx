@@ -2,6 +2,8 @@
 
 import { Lock } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image";
+import Link from "next/link";
 
 export function Header() {
   const scrollToEarlyAccess = () => {
@@ -15,7 +17,15 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
             <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-accent text-accent-foreground">
-              <Lock className="w-4 h-4" aria-label="DataCloak AI Privacy Lock Icon" />
+              <Link href="/">
+        <Image
+          src="/logo.png"
+          alt="DataCloakAI Logo"
+          width={120}
+          height={40}
+          priority
+        />
+      </Link>
             </div>
             <span className="text-lg font-semibold">DataCloak AI</span>
           </div>
