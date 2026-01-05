@@ -12,28 +12,31 @@ export function PrivacyAuditForm() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setError("")
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setError("")
 
-    // Simple email validation
-    if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-      setError("Please enter a valid email address")
-      return
-    }
+  if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    setError("Please enter a valid email address")
+    return
+  }
 
-    // Track form submission
-    trackFormSubmit("Privacy Audit")
+  trackFormSubmit("Privacy Audit")
 
-    // In production, this would send to your backend
-    console.log("Privacy audit request:", email)
+  const res = await fetch('/api/submit-audit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email }),
+  })
 
+  if (res.ok) {
     setSubmitted(true)
     setEmail("")
-
-    // Reset success message after 5 seconds
     setTimeout(() => setSubmitted(false), 5000)
+  } else {
+    setError("Submission failed. Try again.")
   }
+}
 
   return (
     <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
