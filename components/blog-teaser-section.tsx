@@ -2,6 +2,8 @@
 
 import { ArrowRight } from "lucide-react"
 import { trackCTAClick } from "@/lib/analytics"
+import Link from "next/link"
+
 
 export function BlogTeaserSection() {
   const blogTeasers = [
@@ -41,7 +43,7 @@ export function BlogTeaserSection() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {blogTeasers.map((blog, idx) => (
-              <a
+              <Link
                 key={idx}
                 href={blog.link}
                 onClick={() => handleBlogClick(blog.title)}
@@ -56,7 +58,7 @@ export function BlogTeaserSection() {
                 <div className="flex items-center gap-2 text-accent text-sm font-medium">
                   Read More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
