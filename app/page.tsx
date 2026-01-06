@@ -21,6 +21,7 @@ import { setupScrollTracking, trackSectionView } from "@/lib/analytics"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { PurchaseNotification } from "@/components/purchase-notification"
+import { InternalAIChallengeSection } from "@/components/internal-aichallenge-section"
 
 export default function Home() {
   const [showExitIntent, setShowExitIntent] = useState(false)
@@ -71,6 +72,7 @@ export default function Home() {
     <main className="min-h-screen bg-background text-foreground">
       <Header />
       <HeroSection />
+      <InternalAIChallengeSection />
       <SocialProofSection />
       <ProblemSection />
       <SolutionSection />
