@@ -162,31 +162,11 @@ export default function RootLayout({
             }),
           }}
         />
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-9BCQMW8HZ7" strategy="afterInteractive" />
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('consent', 'default', {
-                'analytics_storage': 'denied',
-                'ad_storage': 'denied'
-              });
-              gtag('config', 'G-9BCQMW8HZ7', {
-                'anonymize_ip': true,
-                'allow_google_signals': false
-              });
-            `,
-          }}
-        />
       </head>
       <body className={`font-sans antialiased`}>
         <CookieConsentBanner />
         {children}
         <Toaster position="bottom-left" richColors />
-        <Analytics />
       </body>
     </html>
   )
@@ -249,14 +229,11 @@ function CookieConsentBanner() {
               document.body.appendChild(banner);
               
               document.getElementById('accept-consent').addEventListener('click', function() {
-                localStorage.setItem(consentKey, 'accepted');
-                gtag('consent', 'update', {
-                  'analytics_storage': 'granted',
-                  'ad_storage': 'granted'
-                });
-                banner.remove();
-              });
-              
+  localStorage.setItem(consentKey, 'accepted');
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: 'consent_granted' });
+  banner.remove();
+});           
               document.getElementById('decline-consent').addEventListener('click', function() {
                 localStorage.setItem(consentKey, 'declined');
                 banner.remove();
