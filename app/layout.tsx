@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import "./globals.css"
 import { Toaster } from "sonner"
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -70,7 +71,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)" />
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-        <meta name="google-site-verification" content="your-verification-code-here" />
+        <GoogleAnalytics gaId="G-9BCQMW8HZ7" />
         <Script
           id="schema-breadcrumb"
           type="application/ld+json"
@@ -163,24 +164,6 @@ export default function RootLayout({
           }}
         />
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-9BCQMW8HZ7" strategy="afterInteractive" />
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('consent', 'default', {
-                'analytics_storage': 'denied',
-                'ad_storage': 'denied'
-              });
-              gtag('config', 'G-9BCQMW8HZ7', {
-                'anonymize_ip': true,
-                'allow_google_signals': false
-              });
-            `,
-          }}
-        />
       </head>
       <body className={`font-sans antialiased`}>
         <CookieConsentBanner />
@@ -249,18 +232,21 @@ function CookieConsentBanner() {
               document.body.appendChild(banner);
               
               document.getElementById('accept-consent').addEventListener('click', function() {
-                localStorage.setItem(consentKey, 'accepted');
-                gtag('consent', 'update', {
-                  'analytics_storage': 'granted',
-                  'ad_storage': 'granted'
-                });
-                banner.remove();
-              });
-              
-              document.getElementById('decline-consent').addEventListener('click', function() {
-                localStorage.setItem(consentKey, 'declined');
-                banner.remove();
-              });
+  localStorage.setItem(consentKey, 'accepted');
+
+  gtag('consent', 'update', {
+    'analytics_storage': 'granted',
+    'ad_storage': 'granted'
+  });
+
+  gtag('config', 'G-9BCQMW8HZ7', {
+    anonymize_ip: true,
+    allow_google_signals: false
+  });
+
+  banner.remove();
+});
+
             }
           })();
         `,

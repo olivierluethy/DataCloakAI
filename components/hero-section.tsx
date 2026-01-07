@@ -100,7 +100,7 @@ export function HeroSection() {
           className="space-y-10 sm:space-y-12"
         >
           {/* Headline */}
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -109,7 +109,9 @@ export function HeroSection() {
             Protect Sensitive Data
             <br className="hidden sm:block" />
             <span className="text-white/80">with Privacy-First AI Anonymization</span>
-          </motion.h1>
+
+            <h3>Anonymize PII for ChatGPT & Claude Securely</h3>
+          </motion.h2>
 
           {/* Subheadline */}
           <motion.p

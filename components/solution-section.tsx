@@ -78,7 +78,7 @@ export function SolutionSection() {
               transition={{ duration: 0.6 }}
               className="text-3xl sm:text-4xl lg:text-5xl font-bold"
             >
-              How DataCloak AI Anonymizes Sensitive Data
+              How DataCloak AI Anonymizes PII & Sensitive Data for ChatGPT, Claude & LLMs
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
