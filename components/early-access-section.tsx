@@ -15,7 +15,7 @@ export function EarlyAccessSection() {
 
   const handleGetAccess = () => {
     trackCTAClick("Secure Early Access")
-    window.open("https://buy.stripe.com/test_9B6bJ1cn4d3V03tf5B4Ja00", "_blank")
+    window.open("https://buy.stripe.com/28EfZi6HA3V3ets5GygA800", "_blank")
   }
 
   // Floating icons around the pricing card
