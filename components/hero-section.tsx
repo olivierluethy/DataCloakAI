@@ -106,9 +106,9 @@ export function HeroSection() {
             transition={{ duration: 1, delay: 0.2 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-white"
           >
-            Protect Sensitive Data
+            Before ChatGPT Sees Your Data
             <br className="hidden sm:block" />
-            <span className="text-white/80">with Privacy-First AI Anonymization</span>
+            <span className="text-white/80">We Anonymize It</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -118,9 +118,9 @@ export function HeroSection() {
             transition={{ duration: 1, delay: 0.4 }}
             className="text-lg sm:text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed px-4"
           >
-            Automatically anonymize names, file paths, IDs, and confidential information before sharing with ChatGPT, Claude, or any AI model.
+            Automatically remove sensitive details from your prompts before they reach ChatGPT, Claude, or any AI model — no manual cleanup, no risk.
             <br className="hidden md:block" />
-            GDPR-compliant, zero data retention, and built for ultimate privacy.
+            Zero data retention. Client-side processing. GDPR-compliant by design.
           </motion.p>
 
           {/* Feature Checks – responsive wrapping */}
@@ -162,7 +162,7 @@ export function HeroSection() {
               onMouseEnter={() => trackHeroInteraction("CTA Hover")}
               aria-label="Secure Early Access – Limited spots available"
             >
-              Secure Early Access (Limited Spots)
+              Get Early Access (€39 – Lifetime Core Access)
             </Button>
           </motion.div>
 
@@ -173,7 +173,7 @@ export function HeroSection() {
             transition={{ delay: 1.2 }}
             className="text-sm sm:text-base text-white/50"
           >
-            Join the waitlist — early adopters get priority access
+            No subscription • Full refund before launch • Limited spots
           </motion.p>
         </motion.div>
       </div>

@@ -8,22 +8,12 @@ export function TargetAudienceSection() {
     {
       icon: Code,
       label: "Developers & Engineers",
-      description: "Use AI daily while protecting code and API keys from exposure",
+      description: "Use ChatGPT daily without leaking code, file paths, or API keys.",
     },
     {
       icon: Briefcase,
       label: "Consultants & Freelancers",
-      description: "Maintain client confidentiality while leveraging ChatGPT and Claude",
-    },
-    {
-      icon: Users,
-      label: "Agencies & Teams",
-      description: "Scale AI usage without risking sensitive client data",
-    },
-    {
-      icon: Zap,
-      label: "Privacy-Conscious Professionals",
-      description: "Ensure GDPR compliance in AI workflows automatically",
+      description: "Work with client data in AI tools without violating NDAs or GDPR.",
     },
   ]
 
@@ -68,7 +58,7 @@ export function TargetAudienceSection() {
             transition={{ duration: 0.8 }}
             className="text-center space-y-4"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Who Should Use Privacy-First AI Tools</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Who DataCloak AI Is For</h2>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
               If you care about privacy, compliance, and protecting sensitive data, DataCloak AI is built for you.
             </p>

@@ -138,7 +138,7 @@ export function SocialProofSection() {
               You're not alone.
             </h2>
             <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed">
-              Hundreds of companies — from fintech and defense to consulting and healthcare — 
+              Hundreds of professionals across regulated industries to consulting and healthcare — 
               have already <span className="text-accent font-semibold">paid for early access</span> because they are 
               currently <span className="font-bold">blocked from using AI</span> due to data privacy risks.
             </p>

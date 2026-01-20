@@ -8,11 +8,8 @@ import { ProblemSection } from "@/components/problem-section"
 import { SolutionSection } from "@/components/solution-section"
 import { WhySection } from "@/components/why-section"
 import { TargetAudienceSection } from "@/components/target-audience-section"
-import { CaseStudiesSection } from "@/components/case-studies-section"
 import { FAQSection } from "@/components/faq-section"
-import { BlogTeaserSection } from "@/components/blog-teaser-section"
 import { EarlyAccessSection } from "@/components/early-access-section"
-import { PrivacyAuditForm } from "@/components/privacy-audit-form"
 import { DisclaimerSection } from "@/components/disclaimer-section"
 import { PrivacyTrustSection } from "@/components/privacy-trust-section"
 import { FinalCTASection } from "@/components/final-cta-section"
@@ -78,10 +75,7 @@ export default function Home() {
       <SolutionSection />
       <WhySection />
       <TargetAudienceSection />
-      <CaseStudiesSection />
       <FAQSection />
-      <BlogTeaserSection />
-      <PrivacyAuditForm />
       <EarlyAccessSection />
       <DisclaimerSection />
       <PrivacyTrustSection />
