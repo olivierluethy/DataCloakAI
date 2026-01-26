@@ -1,7 +1,8 @@
 "use client"
 
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { CheckCircle, Lock, Shield, Sparkles, Key, Fingerprint, EyeOff } from "lucide-react"
+import { CheckCircle, Lock, Shield, Sparkles, Key, Fingerprint, EyeOff, Cpu } from "lucide-react"
 import { motion } from "framer-motion"
 import { trackCTAClick, trackHeroInteraction } from "@/lib/analytics"
 
@@ -12,7 +13,6 @@ export function HeroSection() {
     element?.scrollIntoView({ behavior: "smooth" })
   }
 
-  // More floating security icons – increased count, varied sizes, gentle swinging motion
   const floatingIcons = [
     { Icon: Lock, size: 64, delay: 0, duration: 32, x: -350, y: -250 },
     { Icon: Shield, size: 80, delay: 8, duration: 38, x: 400, y: -200 },
@@ -29,153 +29,153 @@ export function HeroSection() {
   ]
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center py-20 px-6 sm:px-8 lg:px-12 overflow-hidden bg-black">
-      {/* Very subtle animated grid */}
-      <div className="absolute inset-0 pointer-events-none opacity-5">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:100px_100px] animate-pulse" />
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center py-16 sm:py-20 lg:py-24 px-6 sm:px-8 lg:px-12 overflow-hidden bg-gradient-to-b from-black to-gray-950"
+    >
+      {/* Background grid – softer and more subtle */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.04]">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:80px_80px] animate-pulse-slow" />
       </div>
 
-      {/* Soft white glow orbs for depth */}
+      {/* Glow orbs – more refined and less intense */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          animate={{
-            x: [0, 150, 0],
-            y: [0, -150, 0],
-          }}
-          transition={{ duration: 45, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 left-0 w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] bg-white/5 rounded-full blur-3xl"
+          animate={{ x: [0, 120, 0], y: [0, -120, 0] }}
+          transition={{ duration: 60, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-20%] left-[-20%] w-[800px] h-[800px] bg-gradient-radial from-blue-500/10 to-transparent rounded-full blur-3xl"
         />
         <motion.div
-          animate={{
-            x: [0, -180, 0],
-            y: [0, 180, 0],
-          }}
-          transition={{ duration: 50, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-0 right-0 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] bg-white/8 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.4, 1],
-          }}
-          transition={{ duration: 55, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] sm:w-[900px] sm:h-[900px] bg-white/3 rounded-full blur-3xl"
+          animate={{ x: [0, -140, 0], y: [0, 140, 0] }}
+          transition={{ duration: 70, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[-20%] right-[-20%] w-[700px] h-[700px] bg-gradient-radial from-purple-500/10 to-transparent rounded-full blur-3xl"
         />
       </div>
 
-      {/* More floating icons with gentle swing + glow */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Floating icons – cleaner opacity & glow */}
+      <div className="absolute inset-0 pointer-events-none hidden sm:block">
         {floatingIcons.map(({ Icon, size, delay, duration, x, y }, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0 }}
             animate={{
-              opacity: [0.03, 0.12, 0.03],
-              x: [x, x + 120, x],
-              y: [y, y + 180, y],
-              rotate: [-5, 5, -5], // subtle swing
+              opacity: [0.04, 0.10, 0.04],
+              x: [x, x + 100, x],
+              y: [y, y + 140, y],
+              rotate: [-4, 4, -4],
             }}
             transition={{
-              opacity: { duration: 12, repeat: Infinity, ease: "easeInOut" },
+              opacity: { duration: 14, repeat: Infinity, ease: "easeInOut" },
               x: { duration, repeat: Infinity, ease: "linear", delay },
               y: { duration, repeat: Infinity, ease: "easeInOut", delay },
-              rotate: { duration: duration * 1.5, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: duration * 1.4, repeat: Infinity, ease: "easeInOut" },
             }}
-            className="absolute hidden sm:block" // hide on very small screens to avoid clutter
-            style={{ left: "50%", top: "50%" }}
+            className="absolute"
+            style={{ left: "50%", top: "50%", transform: `translate(${x}px, ${y}px)` }}
           >
             <Icon
-              className={`w-${size/4} h-${size/4}`}
-              style={{ filter: "drop-shadow(0 0 25px rgba(255,255,255,0.5))" }}
+              className={`w-${Math.round(size / 4)} h-${Math.round(size / 4)} text-white/60`}
+              style={{ filter: "drop-shadow(0 0 20px rgba(255,255,255,0.35))" }}
             />
           </motion.div>
         ))}
       </div>
 
-      {/* Main Content – fully responsive */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="space-y-10 sm:space-y-12"
-        >
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-white"
-          >
-            Before ChatGPT Sees Your Data
-            <br className="hidden sm:block" />
-            <span className="text-white/80">We Anonymize It</span>
-          </motion.h1>
-
-          {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="text-lg sm:text-xl md:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed px-4"
-          >
-            Automatically remove sensitive details from your prompts before they reach ChatGPT, Claude, or any AI model — no manual cleanup, no risk.
-            <br className="hidden md:block" />
-            Zero data retention. Client-side processing. GDPR-compliant by design.
-          </motion.p>
-
-          {/* Feature Checks – responsive wrapping */}
+      {/* Main content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* LEFT: Text + CTA */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 md:gap-10 text-white/80 text-base sm:text-lg"
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="text-center lg:text-left space-y-8 lg:space-y-10"
           >
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              <span>Privacy-First Design</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-tight text-white">
+              Before ChatGPT Sees Your Data
+              <br className="hidden sm:block" />
+              <span className="bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">We Anonymize It</span>
+            </h1>
+
+            <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto lg:mx-0 leading-relaxed font-light">
+              Automatically remove sensitive details from your prompts before they reach ChatGPT, Claude, or any AI model — no manual cleanup, no risk.
+            </p>
+
+            <div className="flex flex-wrap justify-center lg:justify-start gap-6 sm:gap-10 text-white/90 text-base sm:text-lg">
+              {["Privacy-First Design", "GDPR Compliant", "Works with All Major LLMs"].map((text, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-emerald-400 flex-shrink-0" />
+                  <span>{text}</span>
+                </div>
+              ))}
             </div>
-            <div className="text-white/30">•</div>
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              <span>GDPR Compliant</span>
-            </div>
-            <div className="text-white/30">•</div>
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              <span>Works with All Major LLMs</span>
+
+            <div className="pt-6 lg:pt-10">
+              <Button
+                onClick={scrollToEarlyAccess}
+                size="lg"
+                className="bg-white text-black hover:bg-white/95 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] text-lg sm:text-xl px-10 sm:px-14 h-14 sm:h-16 font-semibold rounded-full transition-all duration-500 shadow-xl hover:scale-[1.03] active:scale-95"
+                onMouseEnter={() => trackHeroInteraction("CTA Hover")}
+                aria-label="Secure Early Access – €39 Lifetime Core Access"
+              >
+                Get Early Access (€39 – Lifetime)
+              </Button>
+
+              <p className="mt-4 text-sm sm:text-base text-white/60 font-light">
+                No subscription • Full refund before launch • Limited spots
+              </p>
+
+              {/* Trust Badges – refined styling */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.8 }}
+                className="flex flex-wrap justify-center lg:justify-start gap-4 mt-8"
+              >
+                {[
+                  { Icon: Shield, label: "GDPR Ready" },
+                  { Icon: Cpu, label: "Client-Side Only" },
+                  { Icon: EyeOff, label: "Zero Logs" },
+                  { Icon: Lock, label: "Swiss Privacy" },
+                ].map(({ Icon, label }, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2.5 text-sm text-white/80 bg-white/6 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 shadow-sm hover:bg-white/10 transition-colors"
+                  >
+                    <Icon className="w-4.5 h-4.5 text-emerald-400" />
+                    <span className="font-medium">{label}</span>
+                  </div>
+                ))}
+              </motion.div>
             </div>
           </motion.div>
 
-          {/* CTA Button */}
+          {/* RIGHT: Mockup Image – enhanced presentation */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="mt-8"
+            initial={{ opacity: 0, scale: 0.92, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+            className="relative flex justify-center lg:justify-end"
           >
-            <Button
-              onClick={scrollToEarlyAccess}
-              size="lg"
-              className="bg-white text-black hover:bg-white/90 hover:shadow-2xl hover:shadow-white/40 text-base sm:text-lg px-8 sm:px-10 h-12 sm:h-14 font-semibold rounded-full transition-all duration-500"
-              onMouseEnter={() => trackHeroInteraction("CTA Hover")}
-              aria-label="Secure Early Access – Limited spots available"
-            >
-              Get Early Access (€39 – Lifetime Core Access)
-            </Button>
-          </motion.div>
+            <div className="relative w-full max-w-[520px] md:max-w-[620px] lg:max-w-[680px] xl:max-w-[760px]">
+              {/* Glow behind mockup – softer gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/8 via-purple-600/5 to-transparent rounded-3xl blur-3xl opacity-50 -z-10" />
 
-          {/* Subtle tagline */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            className="text-sm sm:text-base text-white/50"
-          >
-            No subscription • Full refund before launch • Limited spots
-          </motion.p>
-        </motion.div>
+              <Image
+                src="/content.png"
+                alt="DataCloak AI Prompt Anonymizer – Input with sensitive data redacted and safe output preview"
+                width={1400}
+                height={900}
+                priority
+                className="rounded-3xl shadow-2xl shadow-black/70 border border-white/10 object-cover transition-all duration-700 hover:scale-[1.015] hover:shadow-black/80"
+              />
+
+              <p className="mt-5 text-center text-sm text-white/50 font-light tracking-wide">
+                Conceptual preview — Early access version in development
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
