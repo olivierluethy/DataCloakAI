@@ -162,7 +162,7 @@ export function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/8 via-purple-600/5 to-transparent rounded-3xl blur-3xl opacity-50 -z-10" />
 
               <Image
-                src="/content.png"
+                src="/mockup.png"
                 alt="DataCloak AI Prompt Anonymizer – Input with sensitive data redacted and safe output preview"
                 width={1400}
                 height={900}
