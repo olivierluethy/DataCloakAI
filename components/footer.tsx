@@ -1,50 +1,49 @@
+import Link from "next/link"
+import { Mail } from "lucide-react"
+
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-border bg-card/50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-2">
-            <p className="text-sm text-muted-foreground">© {currentYear} DataCloak AI. All rights reserved.</p>
-            <p className="text-xs text-muted-foreground/70">Privacy-first AI protection for the modern professional.</p>
+    <footer className="border-t border-white/10 bg-black py-10 px-6 sm:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 text-sm text-white/60">
+          {/* Left */}
+          <div className="flex items-center gap-6">
+            {/* Logo */}
+            <span className="text-xl font-semibold tracking-tight text-white">
+              DataCloak<span className="text-white/70">AI</span>
+            </span>
+
+            <span>© {currentYear} DataCloak AI. All rights reserved.</span>
           </div>
 
-          <nav className="flex flex-col sm:flex-row gap-6 text-sm text-muted-foreground flex-wrap justify-center">
-            <ul className="flex gap-6 flex-wrap justify-center">
-              <li>
-                <a href="/privacy-policy" className="hover:text-foreground transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="/terms-of-service" className="hover:text-foreground transition-colors">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="/blog" className="hover:text-foreground transition-colors">
-                  Blog - AI Privacy Tips
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="hover:text-foreground transition-colors">
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://gdpr.eu/"
-                  rel="noreferrer nofollow noopener"
-                  target="_blank"
-                  className="hover:text-foreground transition-colors"
-                  aria-label="GDPR.eu - External link to official GDPR resources"
-                >
-                  GDPR Resources
-                </a>
-              </li>
-            </ul>
+          {/* Center or right – links */}
+          <nav className="flex flex-wrap justify-center gap-x-8 gap-y-2">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-of-service" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+            <a
+              href="https://gdpr.eu/"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="hover:text-white transition-colors"
+            >
+              GDPR
+            </a>
           </nav>
+
+          {/* Right – email */}
+          <a
+            href="mailto:business.promptin@gmail.com"
+            className="flex items-center gap-2 hover:text-white transition-colors"
+          >
+            <Mail className="h-4 w-4" />
+            business.promptin@gmail.com
+          </a>
         </div>
       </div>
     </footer>

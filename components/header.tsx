@@ -38,7 +38,7 @@ export function Header() {
                   className="w-auto h-7"
                 />
               </div>
-              <span className="text-lg font-semibold">DataCloak AI</span>
+              <span className="text-lg font-semibold">DataCloakAI</span>
             </Link>
           </div>
 
