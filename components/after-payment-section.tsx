@@ -173,10 +173,11 @@ export function PostPurchaseTrustSection() {
             transition={{ duration: 1, delay: 0.7 }}
             className="mt-16 text-center"
           >
-            <p className="text-xl font-medium text-accent inline-flex items-center gap-3">
-              No risk. Lifetime deal. You literally cannot lose.
-              <ArrowRight className="w-5 h-5" />
-            </p>
+            <p className="text-xl font-medium text-white italic inline-flex items-center gap-3">
+  No risk. Lifetime deal. You literally cannot lose.
+  <ArrowRight className="w-5 h-5" />
+</p>
+
           </motion.div>
         </div>
       </div>

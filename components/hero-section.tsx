@@ -58,8 +58,8 @@ export function HeroSection() {
         />
       </div>
 
-      {/* Floating icons */}
-      <div className="absolute inset-0 pointer-events-none hidden sm:block">
+      {/* Floating icons (responsive for all screens) */}
+      <div className="absolute inset-0 pointer-events-none">
         {floatingIcons.map(({ Icon, size, delay, duration, x, y }, idx) => (
           <motion.div
             key={idx}
@@ -77,10 +77,14 @@ export function HeroSection() {
               rotate: { duration: duration * 1.4, repeat: Infinity, ease: "easeInOut" },
             }}
             className="absolute"
-            style={{ left: "50%", top: "50%", transform: `translate(${x}px, ${y}px)` }}
+            style={{
+              left: "50%",
+              top: "50%",
+              transform: `translate(${x * 0.7}px, ${y * 0.7}px)`, // scale down for small screens
+            }}
           >
             <Icon
-              className={`w-${Math.round(size / 4)} h-${Math.round(size / 4)} text-white/60`}
+              className={`w-[${Math.round(size / 5)}px] h-[${Math.round(size / 5)}px] sm:w-[${Math.round(size / 4)}px] sm:h-[${Math.round(size / 4)}px] text-white/60`}
               style={{ filter: "drop-shadow(0 0 20px rgba(255,255,255,0.35))" }}
             />
           </motion.div>

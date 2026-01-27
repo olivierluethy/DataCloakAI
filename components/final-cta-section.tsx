@@ -97,9 +97,10 @@ export function FinalCTASection() {
           >
             Secure Your Spot in the Future of
             <br />
-            <span className="bg-gradient-to-r from-accent via-accent/80 to-accent/60 bg-clip-text text-transparent">
-              Privacy-First AI
-            </span>
+            <span className="text-white italic font-semibold drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">
+  Privacy-First AI
+</span>
+
           </motion.h2>
 
           <motion.p

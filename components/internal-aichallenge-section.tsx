@@ -166,14 +166,15 @@ export function InternalAIChallengeSection() {
           >
             <p className="text-2xl sm:text-3xl font-semibold text-foreground">
               Why reinvent the wheel at enormous cost — when you can use the best AI models
-              <span className="text-accent"> safely and privately</span>?
+              <span className="text-accent-200 font-semibold italic"> safely and privately</span>?
             </p>
             <p className="text-xl text-muted-foreground">
               That capital could fuel revenue-generating initiatives instead of building inferior tools that never pay back.
             </p>
-            <p className="text-2xl font-bold bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent">
-              DataCloak AI lets you embrace top-tier AI — without compromising your data.
-            </p>
+            <p className="text-2xl font-bold text-white/95">
+  DataCloak AI lets you embrace top-tier AI — without compromising your data.
+</p>
+
           </motion.div>
         </div>
       </div>

@@ -186,7 +186,7 @@ export function HowItWorksSection() {
           transition={{ duration: 1, delay: 0.7 }}
           className="mt-16 text-center text-lg text-muted-foreground"
         >
-          <span className="text-accent font-medium">No servers. No logs. No risk.</span>
+          <span className="text-white italic font-medium">No servers. No logs. No risk.</span>
           <span className="mx-2">—</span>
           Just clean, safe, realistic data.
         </motion.div>
