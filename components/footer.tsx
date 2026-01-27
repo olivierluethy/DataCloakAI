@@ -1,8 +1,8 @@
-import Link from "next/link"
-import { Mail } from "lucide-react"
+import Link from "next/link";
+import { Mail } from "lucide-react";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="border-t border-white/10 bg-black py-10 px-6 sm:px-8">
@@ -11,19 +11,31 @@ export function Footer() {
           {/* Left */}
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <span className="text-xl font-semibold tracking-tight text-white">
-              DataCloak<span className="text-white/70">AI</span>
-            </span>
+            <div className="flex items-center space-x-2">
+              {/* Logo on the left */}
+              <img src="/logo.png" alt="DataCloak Logo" className="w-8 h-8" />
+
+              {/* Text with "AI" in yellow */}
+              <span className="text-xl font-semibold tracking-tight text-white">
+                DataCloak<span className="text-yellow-400/70">AI</span>
+              </span>
+            </div>
 
             <span>© {currentYear} DataCloak AI. All rights reserved.</span>
           </div>
 
           {/* Center or right – links */}
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-2">
-            <Link href="/privacy-policy" className="hover:text-white transition-colors">
+            <Link
+              href="/privacy-policy"
+              className="hover:text-white transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms-of-service" className="hover:text-white transition-colors">
+            <Link
+              href="/terms-of-service"
+              className="hover:text-white transition-colors"
+            >
               Terms of Service
             </Link>
             <a
@@ -47,5 +59,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
