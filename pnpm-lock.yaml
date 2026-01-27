@@ -171,8 +171,8 @@ importers:
         specifier: ^1.7.4
         version: 1.7.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       stripe:
-        specifier: ^20.1.2
-        version: 20.1.2(@types/node@22.0.0)
+        specifier: ^16.12.0
+        version: 16.12.0
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.3.1
@@ -2222,14 +2222,9 @@ packages:
     resolution: {integrity: sha512-uCC2VHvQRYu+lMh4My/sFNmF2klFymLX1wHJeXnbEJERpV/ZsVuonzerjfrGpIGF7LBVa1O7i9kjiWvJiFck8g==}
     engines: {node: '>=0.10.0'}
 
-  stripe@20.1.2:
-    resolution: {integrity: sha512-qU+lQRRJnTxmyvglYBPE24/IepncmywsAg0GDTsTdP2pb+3e3RdREHJZjKgqCmv0phPxN/nmgNPnIPPH8w0P4A==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      '@types/node': '>=16'
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
+  stripe@16.12.0:
+    resolution: {integrity: sha512-H7eFVLDxeTNNSn4JTRfL2//LzCbDrMSZ+2q1c7CanVWgK2qIW5TwS+0V7N9KcKZZNpYh/uCqK0PyZh/2UsaAtQ==}
+    engines: {node: '>=12.*'}
 
   style-to-js@1.1.21:
     resolution: {integrity: sha512-RjQetxJrrUJLQPHbLku6U/ocGtzyjbJMP9lCNK7Ag0CNh690nSH8woqWH9u16nMjYBAok+i7JO1NP2pOy8IsPQ==}
@@ -4613,11 +4608,10 @@ snapshots:
 
   strip-bom-string@1.0.0: {}
 
-  stripe@20.1.2(@types/node@22.0.0):
+  stripe@16.12.0:
     dependencies:
-      qs: 6.14.1
-    optionalDependencies:
       '@types/node': 22.0.0
+      qs: 6.14.1
 
   style-to-js@1.1.21:
     dependencies:
