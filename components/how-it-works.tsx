@@ -70,15 +70,16 @@ export function HowItWorksSection() {
       <div className="mx-auto max-w-6xl relative z-10">
         <div className="text-center space-y-5 mb-16 md:mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium"
-          >
-            <CheckCircle2 className="w-4 h-4" />
-            3 steps · privacy-first
-          </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.7 }}
+  className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-accent/30 border border-accent/30 text-white font-medium text-sm shadow-sm"
+>
+  <CheckCircle2 className="w-4 h-4 text-white" />
+  3 steps · privacy-first
+</motion.div>
+
 
           <motion.h2
             initial={{ opacity: 0, y: 25 }}

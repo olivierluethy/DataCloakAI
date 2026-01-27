@@ -152,12 +152,13 @@ export function EarlyAccessSection() {
                 </div>
 
                 <Button
-                  onClick={handleGetAccess}
-                  size="lg"
-                  className="w-full h-16 text-xl font-bold rounded-2xl bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent shadow-2xl hover:shadow-accent/50 transition-all duration-500"
-                >
-                  Secure Your Spot Now
-                </Button>
+  onClick={handleGetAccess}
+  size="lg"
+  className="w-full h-16 text-xl font-bold rounded-2xl bg-white text-black hover:bg-gray-100 shadow-2xl hover:shadow-lg transition-all duration-500"
+>
+  Secure Your Spot Now
+</Button>
+
 
                 <p className="text-sm text-muted-foreground/80">
                   <span className="font-semibold text-foreground">Only 50 spots left</span> • Join 500+ privacy-focused professionals

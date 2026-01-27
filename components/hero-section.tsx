@@ -1,17 +1,23 @@
 "use client"
 
 import Image from "next/image"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, Lock, Shield, Sparkles, Key, Fingerprint, EyeOff, Cpu } from "lucide-react"
 import { motion } from "framer-motion"
 import { trackCTAClick, trackHeroInteraction } from "@/lib/analytics"
 
 export function HeroSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const scrollToEarlyAccess = () => {
     trackCTAClick("Secure Early Access")
     const element = document.getElementById("early-access")
     element?.scrollIntoView({ behavior: "smooth" })
   }
+
+  const openModal = () => setIsModalOpen(true)
+  const closeModal = () => setIsModalOpen(false)
 
   const floatingIcons = [
     { Icon: Lock, size: 64, delay: 0, duration: 32, x: -350, y: -250 },
@@ -33,12 +39,12 @@ export function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center py-16 sm:py-20 lg:py-24 px-6 sm:px-8 lg:px-12 overflow-hidden bg-gradient-to-b from-black to-gray-950"
     >
-      {/* Background grid – softer and more subtle */}
+      {/* Background grid */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:80px_80px] animate-pulse-slow" />
       </div>
 
-      {/* Glow orbs – more refined and less intense */}
+      {/* Glow orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           animate={{ x: [0, 120, 0], y: [0, -120, 0] }}
@@ -52,7 +58,7 @@ export function HeroSection() {
         />
       </div>
 
-      {/* Floating icons – cleaner opacity & glow */}
+      {/* Floating icons */}
       <div className="absolute inset-0 pointer-events-none hidden sm:block">
         {floatingIcons.map(({ Icon, size, delay, duration, x, y }, idx) => (
           <motion.div
@@ -125,7 +131,7 @@ export function HeroSection() {
                 No subscription • Full refund before launch • Limited spots
               </p>
 
-              {/* Trust Badges – refined styling */}
+              {/* Trust Badges */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -150,17 +156,17 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          {/* RIGHT: Mockup Image – enhanced presentation */}
+          {/* RIGHT: Mockup Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.92, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
             className="relative flex justify-center lg:justify-end"
           >
-            <div className="relative w-full max-w-[520px] md:max-w-[620px] lg:max-w-[680px] xl:max-w-[760px]">
-              {/* Glow behind mockup – softer gradient */}
+            <div className="relative w-full max-w-[520px] md:max-w-[620px] lg:max-w-[680px] xl:max-w-[760px] cursor-pointer">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/8 via-purple-600/5 to-transparent rounded-3xl blur-3xl opacity-50 -z-10" />
 
+              {/* Clickable image */}
               <Image
                 src="/mockup.png"
                 alt="DataCloak AI Prompt Anonymizer – Input with sensitive data redacted and safe output preview"
@@ -168,6 +174,7 @@ export function HeroSection() {
                 height={900}
                 priority
                 className="rounded-3xl shadow-2xl shadow-black/70 border border-white/10 object-cover transition-all duration-700 hover:scale-[1.015] hover:shadow-black/80"
+                onClick={openModal}
               />
 
               <p className="mt-5 text-center text-sm text-white/50 font-light tracking-wide">
@@ -177,6 +184,33 @@ export function HeroSection() {
           </motion.div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          onClick={closeModal}
+        >
+          <div
+            className="relative max-w-[90vw] max-h-[90vh] overflow-hidden rounded-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={closeModal}
+              className="absolute top-3 right-3 text-white text-2xl font-bold z-50 hover:text-gray-300"
+            >
+              ×
+            </button>
+            <Image
+              src="/mockup.png"
+              alt="Mockup enlarged"
+              width={1400}
+              height={900}
+              className="w-full h-auto object-contain rounded-xl"
+            />
+          </div>
+        </div>
+      )}
     </section>
   )
 }

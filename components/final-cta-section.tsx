@@ -123,12 +123,13 @@ export function FinalCTASection() {
             className="mt-12"
           >
             <Button
-              onClick={scrollToEarlyAccess}
-              size="lg"
-              className="bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent text-white text-xl sm:text-2xl px-12 sm:px-16 h-16 sm:h-20 font-bold rounded-full shadow-2xl hover:shadow-3xl hover:shadow-accent/50 transition-all duration-500"
-            >
-              Secure Early Access Now
-            </Button>
+  onClick={scrollToEarlyAccess}
+  size="lg"
+  className="bg-white text-black text-xl sm:text-2xl px-12 sm:px-16 h-16 sm:h-20 font-bold rounded-full shadow-2xl hover:shadow-3xl transition-all duration-500"
+>
+  Secure Early Access Now
+</Button>
+
           </motion.div>
 
           <motion.p

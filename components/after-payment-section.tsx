@@ -72,10 +72,11 @@ export function PostPurchaseTrustSection() {
             transition={{ duration: 0.8 }}
             className="text-center space-y-5"
           >
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium">
-              <CheckCircle2 className="w-4 h-4" />
-              Zero risk • Lifetime deal
-            </div>
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-accent/30 border border-accent/30 text-white text-sm font-medium shadow-sm">
+  <CheckCircle2 className="w-4 h-4 text-white" />
+  Zero risk • Lifetime deal
+</div>
+
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
               What happens after you pay?
