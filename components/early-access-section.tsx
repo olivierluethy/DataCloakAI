@@ -151,13 +151,14 @@ export function EarlyAccessSection() {
                   <p className="text-muted-foreground">No subscription • Lifetime core access</p>
                 </div>
 
-                <Button
+              <Button
   onClick={handleGetAccess}
   size="lg"
-  className="w-full h-16 text-xl font-bold rounded-2xl bg-white text-black hover:bg-gray-100 shadow-2xl hover:shadow-lg transition-all duration-500"
+  className="cursor-pointer w-full h-16 text-xl font-bold rounded-2xl bg-white text-black hover:bg-gray-100 shadow-2xl hover:shadow-lg transition-all duration-500"
 >
   Secure Your Spot Now
 </Button>
+
 
 
                 <p className="text-sm text-muted-foreground/80">

@@ -47,7 +47,9 @@ export function FAQSection() {
       <div className="mx-auto max-w-3xl">
         <div className="space-y-12">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-bold">Frequently Asked Questions about AI Data Anonymization</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold">
+              Frequently Asked Questions about AI Data Anonymization
+            </h2>
             <p className="text-lg text-muted-foreground">
               Learn more about AI data anonymization and privacy-first AI tools.
             </p>
@@ -61,14 +63,17 @@ export function FAQSection() {
               >
                 <button
                   onClick={() => handleToggle(index)}
-                  className="w-full px-6 py-4 flex items-center justify-between hover:bg-background/50 transition-colors text-left"
+                  className="cursor-pointer w-full px-6 py-4 flex items-center justify-between hover:bg-background/50 transition-colors text-left"
                   aria-expanded={openIndex === index}
                   aria-label={`Toggle FAQ: ${faq.question}`}
                 >
-                  <h3 className="font-semibold text-foreground">{faq.question}</h3>
+                  <h3 className="font-semibold text-foreground">
+                    {faq.question}
+                  </h3>
+
                   <ChevronDown
                     className={`w-5 h-5 text-accent flex-shrink-0 transition-transform ${
-                      openIndex === index ? "transform rotate-180" : ""
+                      openIndex === index ? "rotate-180" : ""
                     }`}
                     aria-label={openIndex === index ? "Collapse answer" : "Expand answer"}
                   />
@@ -76,7 +81,9 @@ export function FAQSection() {
 
                 {openIndex === index && (
                   <div className="px-6 py-4 border-t border-border bg-background/50">
-                    <p className="text-muted-foreground text-sm leading-relaxed">{faq.answer}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {faq.answer}
+                    </p>
                   </div>
                 )}
               </div>

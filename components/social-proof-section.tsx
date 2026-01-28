@@ -264,20 +264,21 @@ export function SocialProofSection() {
 
                 {/* Navigation arrows – more refined & mobile-friendly */}
                 <button
-                  onClick={prev}
-                  className="absolute left-0 sm:left-[-3rem] lg:left-[-5rem] top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-background/70 backdrop-blur border border-border/50 shadow-md hover:bg-accent/10 hover:border-accent/30 transition-all duration-300"
-                  aria-label="Previous testimonial"
-                >
-                  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
-                </button>
+  onClick={prev}
+  className="cursor-pointer absolute left-0 sm:left-[-3rem] lg:left-[-5rem] top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-background/70 backdrop-blur border border-border/50 shadow-md hover:bg-accent/10 hover:border-accent/30 transition-all duration-300"
+  aria-label="Previous testimonial"
+>
+  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
+</button>
 
-                <button
-                  onClick={next}
-                  className="absolute right-0 sm:right-[-3rem] lg:right-[-5rem] top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-background/70 backdrop-blur border border-border/50 shadow-md hover:bg-accent/10 hover:border-accent/30 transition-all duration-300"
-                  aria-label="Next testimonial"
-                >
-                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
-                </button>
+<button
+  onClick={next}
+  className="cursor-pointer absolute right-0 sm:right-[-3rem] lg:right-[-5rem] top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-background/70 backdrop-blur border border-border/50 shadow-md hover:bg-accent/10 hover:border-accent/30 transition-all duration-300"
+  aria-label="Next testimonial"
+>
+  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
+</button>
+
               </motion.div>
             </AnimatePresence>
 

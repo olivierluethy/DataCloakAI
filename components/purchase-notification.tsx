@@ -53,13 +53,25 @@ export function PurchaseNotification() {
             <Check className="h-6 w-6 text-accent" />
           </div>
 
-          <div className="space-y-1">
-            <p className="text-sm font-medium text-foreground">
-              {randomName} from {randomCountry.name}
-            </p>
+          <div className="min-w-0 flex-1 space-y-1">
+            {/* Name line with verified badge */}
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <p className="text-sm font-medium text-foreground">
+                {randomName} ({randomCountry.name})
+              </p>
+
+              {/* Verified by Afterquandt badge */}
+              <div className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-1.5 py-0.5 text-xs font-medium text-green-400">
+  <Check className="h-3 w-3" />
+  Verified purchase
+</div>
+
+            </div>
+
             <p className="text-base font-semibold text-foreground">
-              Just secured Lifetime Access to DataCloak AI!
-            </p>
+  Purchased a Lifetime license for DataCloak AI
+</p>
+
           </div>
 
           {/* Country flag */}

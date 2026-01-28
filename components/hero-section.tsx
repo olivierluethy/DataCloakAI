@@ -121,15 +121,16 @@ export function HeroSection() {
             </div>
 
             <div className="pt-6 lg:pt-10">
-              <Button
-                onClick={scrollToEarlyAccess}
-                size="lg"
-                className="bg-white text-black hover:bg-white/95 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] text-lg sm:text-xl px-10 sm:px-14 h-14 sm:h-16 font-semibold rounded-full transition-all duration-500 shadow-xl hover:scale-[1.03] active:scale-95"
-                onMouseEnter={() => trackHeroInteraction("CTA Hover")}
-                aria-label="Secure Early Access – €39 Lifetime Core Access"
-              >
-                Get Early Access (€39 – Lifetime)
-              </Button>
+             <Button
+  onClick={scrollToEarlyAccess}
+  size="lg"
+  className="cursor-pointer bg-white text-black hover:bg-white/95 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] text-lg sm:text-xl px-10 sm:px-14 h-14 sm:h-16 font-semibold rounded-full transition-all duration-500 shadow-xl hover:scale-[1.03] active:scale-95"
+  onMouseEnter={() => trackHeroInteraction('CTA Hover')}
+  aria-label="Secure Early Access – €39 Lifetime Core Access"
+>
+  Get Early Access (€39 – Lifetime)
+</Button>
+
 
               <p className="mt-4 text-sm sm:text-base text-white/60 font-light">
                 No subscription • Full refund before launch • Limited spots

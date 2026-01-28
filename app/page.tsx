@@ -94,14 +94,15 @@ export default function Home() {
               Secure your place now and get lifetime access to DataCloak AI for just €39. Limited 50 spots available.
             </DialogDescription>
           </DialogHeader>
-          <Button
-            onClick={scrollToEarlyAccess}
-            size="lg"
-            className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-            aria-label="Secure Early Access to DataCloak AI"
-          >
-            Secure Access Now
-          </Button>
+         <Button
+  onClick={scrollToEarlyAccess}
+  size="lg"
+  className="cursor-pointer w-full bg-primary text-primary-foreground hover:bg-primary/90"
+  aria-label="Secure Early Access to DataCloak AI"
+>
+  Secure Access Now
+</Button>
+
         </DialogContent>
       </Dialog>
       <PurchaseNotification />
