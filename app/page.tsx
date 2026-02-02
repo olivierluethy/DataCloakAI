@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button"
 import { PurchaseNotification } from "@/components/purchase-notification"
 import { InternalAIChallengeSection } from "@/components/internal-aichallenge-section"
 import { PostPurchaseTrustSection } from "@/components/after-payment-section"
-import { HowItWorksSection} from "@/components/how-it-works"
+import { HowItWorksSection } from "@/components/how-it-works"
 
 export default function Home() {
   const [showExitIntent, setShowExitIntent] = useState(false)
@@ -28,13 +28,29 @@ export default function Home() {
   useEffect(() => {
     setupScrollTracking()
 
+    // Prüfen, ob das Popup in dieser Session schon mal gezeigt wurde
+    const hasSeenExitPopup = sessionStorage.getItem("hasSeenExitPopup")
+
     const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0) {
+      // Nur auslösen, wenn:
+      // 1. Maus wirklich nach oben verlässt (nicht seitlich)
+      // 2. Popup noch nicht gezeigt wurde
+      // 3. Dialog gerade nicht offen ist
+      if (
+        e.clientY <= 0 &&
+        !hasSeenExitPopup &&
+        !showExitIntent
+      ) {
         setShowExitIntent(true)
+        // Merken, dass wir es gezeigt haben
+        sessionStorage.setItem("hasSeenExitPopup", "true")
       }
     }
 
-    document.addEventListener("mouseleave", handleMouseLeave)
+    // Nur den Listener hinzufügen, wenn es noch nicht gezeigt wurde
+    if (!hasSeenExitPopup) {
+      document.addEventListener("mouseleave", handleMouseLeave)
+    }
 
     const sections = document.querySelectorAll("section[id]")
     const observerOptions = {
@@ -59,12 +75,17 @@ export default function Home() {
       document.removeEventListener("mouseleave", handleMouseLeave)
       observer.disconnect()
     }
-  }, [])
+  }, [showExitIntent]) // showExitIntent als Abhängigkeit, falls sich Zustand ändert
 
   const scrollToEarlyAccess = () => {
     setShowExitIntent(false)
     const element = document.getElementById("early-access")
     element?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const handleDialogClose = () => {
+    setShowExitIntent(false)
+    // Hier wird bereits in handleMouseLeave gesetzt → kein zweites Mal nötig
   }
 
   return (
@@ -78,7 +99,7 @@ export default function Home() {
       <WhySection />
       <TargetAudienceSection />
       <FAQSection />
-      <HowItWorksSection/>
+      <HowItWorksSection />
       <EarlyAccessSection />
       <DisclaimerSection />
       <PrivacyTrustSection />
@@ -86,7 +107,10 @@ export default function Home() {
       <FinalCTASection />
       <Footer />
 
-      <Dialog open={showExitIntent} onOpenChange={setShowExitIntent}>
+      <Dialog 
+        open={showExitIntent} 
+        onOpenChange={handleDialogClose}
+      >
         <DialogContent className="sm:max-w-md dialog-content">
           <DialogHeader>
             <DialogTitle>Don't miss limited early access spots</DialogTitle>
@@ -94,17 +118,17 @@ export default function Home() {
               Secure your place now and get lifetime access to DataCloak AI for just €39. Limited 50 spots available.
             </DialogDescription>
           </DialogHeader>
-         <Button
-  onClick={scrollToEarlyAccess}
-  size="lg"
-  className="cursor-pointer w-full bg-primary text-primary-foreground hover:bg-primary/90"
-  aria-label="Secure Early Access to DataCloak AI"
->
-  Secure Access Now
-</Button>
-
+          <Button
+            onClick={scrollToEarlyAccess}
+            size="lg"
+            className="cursor-pointer w-full bg-primary text-primary-foreground hover:bg-primary/90"
+            aria-label="Secure Early Access to DataCloak AI"
+          >
+            Secure Access Now
+          </Button>
         </DialogContent>
       </Dialog>
+
       <PurchaseNotification />
     </main>
   )
