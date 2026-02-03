@@ -34,7 +34,7 @@ export function EarlyAccessSection() {
     trackCTAClick("Join Waitlist Submit")
 
     try {
-      const res = await fetch("/api/submit-audit", {
+      const res = await fetch("/api/join-waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
