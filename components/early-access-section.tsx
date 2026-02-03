@@ -24,7 +24,31 @@ export function EarlyAccessSection() {
     if (!email) return
     
     setLoading(true)
+
+    // optional: basic validation
+    if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      setLoading(false)
+      return
+    }
+
     trackCTAClick("Join Waitlist Submit")
+
+    try {
+      const res = await fetch("/api/submit-audit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
+
+      if (!res.ok) throw new Error("Failed")
+
+      setSubmitted(true)
+      setEmail("")
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
     
     // HIER: Deine API-Anbindung oder Supabase/Formspree etc.
     // Beispielhafter Delay für die UI
