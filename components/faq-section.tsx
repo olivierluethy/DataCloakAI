@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, HelpCircle, ShieldCheck, Zap, Lock, Globe } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 import { trackFAQOpen } from "@/lib/analytics"
 
 export function FAQSection() {
@@ -9,86 +10,105 @@ export function FAQSection() {
 
   const faqs = [
     {
-      question: "What is AI data anonymization?",
-      answer:
-        "AI data anonymization automatically removes or obfuscates sensitive information like names, file paths, IDs, and confidential data before sending inputs to AI models. This privacy-first approach protects your data when using ChatGPT, Claude, or other AI tools while maintaining enough context for useful AI responses.",
+      question: "How does the anonymization affect AI response quality?",
+      answer: "We use 'Context-Aware Cloaking'. Unlike simple redaction, we replace sensitive data with realistic synthetic placeholders. This ensures that models like ChatGPT or Claude still understand the structure and intent of your prompt, providing high-quality results without seeing your actual secrets.",
+      icon: Zap
     },
     {
-      question: "How does DataCloak AI ensure GDPR compliance?",
-      answer:
-        "DataCloak AI automatically anonymizes sensitive data according to GDPR requirements. By removing personally identifiable information (PII) before any data transmission to external AI services, we help you maintain GDPR compliance in your AI workflows without manual effort.",
+      question: "Does my data ever touch your servers?",
+      answer: "No. DataCloak AI is built on a 'Local-First' architecture. All detection and anonymization happens directly on your device. Your original, sensitive data never leaves your local environment—only the 'cloaked' version is sent to the AI provider.",
+      icon: Lock
     },
     {
-      question: "Who should use privacy-first AI tools like DataCloak?",
-      answer:
-        "Developers, freelancers, consultants, and professionals who work with sensitive client data should use privacy-first AI tools. If you're concerned about data leaks, GDPR compliance, or maintaining client confidentiality while using AI, DataCloak AI is built for you.",
+      question: "Is DataCloak AI compliant with GDPR and Swiss FADP?",
+      answer: "Yes. By ensuring that Personally Identifiable Information (PII) is removed before it reaches any US-based AI cloud, you maintain full compliance. It's the technical safeguard needed for professionals in regulated industries (Law, Finance, Consulting).",
+      icon: ShieldCheck
     },
     {
-      question: "Can I anonymize sensitive data for ChatGPT?",
-      answer:
-        "Yes, DataCloak AI specializes in automatically anonymizing data before sending it to ChatGPT, Claude, and other AI models. This lets you get AI assistance on sensitive topics without risking your confidential information.",
+      question: "Can I connect my own databases and APIs?",
+      answer: "Absolutely. Beyond simple text input, DataCloak AI is designed to integrate with your data ecosystem (SQL, CSV, JSON APIs). It acts as a secure proxy, cloaking data streams in real-time before they are processed by LLMs.",
+      icon: Globe
     },
     {
-      question: "What makes DataCloak AI the best AI input protection tool?",
-      answer:
-        "DataCloak AI combines automatic detection with zero-knowledge architecture: client-side processing means your data never leaves your device, there's no data storage on servers, and no prompt logging. Plus, it requires zero manual work—just type naturally and we handle the anonymization.",
+      question: "What exactly is included in the Early Adopter Lifetime Deal?",
+      answer: "The €39 Lifetime Deal gives you permanent access to the core anonymization engine. No monthly subscriptions, no hidden fees. Plus, as an early adopter, you get priority access to beta features and a direct line to our roadmap.",
+      icon: HelpCircle
     },
   ]
 
   const handleToggle = (index: number) => {
-    if (openIndex !== index) {
-      trackFAQOpen(faqs[index].question)
-    }
+    if (openIndex !== index) trackFAQOpen(faqs[index].question)
     setOpenIndex(openIndex === index ? null : index)
   }
 
   return (
-    <section id="faq" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-3xl">
-        <div className="space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-bold">
-              Frequently Asked Questions about AI Data Anonymization
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Learn more about AI data anonymization and privacy-first AI tools.
-            </p>
-          </div>
+    <section id="faq" className="py-24 sm:py-32 px-4 relative overflow-hidden bg-black/20">
+      <div className="mx-auto max-w-4xl relative z-10">
+        
+        <div className="text-center space-y-4 mb-16">
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white">
+            Common <span className="text-accent">Questions</span>
+          </h2>
+          <p className="text-lg text-white/50 max-w-2xl mx-auto">
+            Everything you need to know about the future of secure AI workflows.
+          </p>
+        </div>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="border border-border rounded-lg bg-card hover:border-accent/50 transition-colors overflow-hidden"
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={false}
+              className={`rounded-2xl border transition-all duration-300 ${
+                openIndex === index 
+                ? "border-accent/40 bg-white/[0.05] shadow-[0_0_30px_-12px_rgba(var(--accent-rgb),0.3)]" 
+                : "border-white/5 bg-white/[0.02] hover:bg-white/[0.04]"
+              }`}
+            >
+              <button
+                onClick={() => handleToggle(index)}
+                className="w-full px-6 py-5 flex items-center justify-between text-left cursor-pointer group"
               >
-                <button
-                  onClick={() => handleToggle(index)}
-                  className="cursor-pointer w-full px-6 py-4 flex items-center justify-between hover:bg-background/50 transition-colors text-left"
-                  aria-expanded={openIndex === index}
-                  aria-label={`Toggle FAQ: ${faq.question}`}
-                >
-                  <h3 className="font-semibold text-foreground">
+                <div className="flex items-center gap-4">
+                  <div className={`p-2 rounded-lg transition-colors ${openIndex === index ? "bg-accent text-black" : "bg-white/5 text-accent group-hover:bg-accent/20"}`}>
+                    <faq.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white/90 group-hover:text-white transition-colors">
                     {faq.question}
                   </h3>
+                </div>
+                <ChevronDown
+                  className={`w-5 h-5 text-white/30 transition-transform duration-300 ${
+                    openIndex === index ? "rotate-180 text-accent" : ""
+                  }`}
+                />
+              </button>
 
-                  <ChevronDown
-                    className={`w-5 h-5 text-accent flex-shrink-0 transition-transform ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                    aria-label={openIndex === index ? "Collapse answer" : "Expand answer"}
-                  />
-                </button>
-
+              <AnimatePresence initial={false}>
                 {openIndex === index && (
-                  <div className="px-6 py-4 border-t border-border bg-background/50">
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  >
+                    <div className="px-6 pb-6 pt-2 ml-14">
+                      <p className="text-white/60 leading-relaxed text-base">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </motion.div>
                 )}
-              </div>
-            ))}
-          </div>
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Support Nudge */}
+        <div className="mt-12 text-center">
+          <p className="text-sm text-white/30">
+            Have a more technical question? <a href="mailto:business.promptin@gmail.com" className="text-accent hover:underline decoration-accent/30 underline-offset-4 font-medium transition-all">Reach out to our engineering team.</a>
+          </p>
         </div>
       </div>
     </section>

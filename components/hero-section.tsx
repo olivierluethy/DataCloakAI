@@ -64,7 +64,7 @@ export function HeroSection() {
               </Button>
               
               <div className="flex flex-col items-center sm:items-start">
-                <span className="text-sm font-semibold">Join 500+ professionals</span>
+                <span className="text-sm font-semibold">Join 500+ professionals on the priority waitlist</span>
                 <div className="flex gap-1">
                   {[1, 2, 3, 4, 5].map((s) => (
                     <Star key={s} className="w-3 h-3 fill-yellow-500 text-yellow-500" />
