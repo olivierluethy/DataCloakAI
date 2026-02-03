@@ -25,15 +25,26 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(request: Request) {
   try {
-    const [rows] = await pool.execute(
-      'SELECT email FROM privacy_audit_emails'
-    ) as [Array<{ email: string }>, any];
-
-    if (rows.length === 0) {
-      return NextResponse.json({ message: 'No recipients found in waitlist.' });
+    // Schutz (sehr empfohlen!)
+    if (request.headers.get('x-trigger-secret') !== process.env.INTERNAL_TRIGGER_SECRET) {
+      return NextResponse.json({ error: 'Unauthorized trigger' }, { status: 403 })
     }
 
-    const emails = rows.map(row => row.email);
+    const body = await request.json().catch(() => ({}))
+    let emails: string[] = []
+
+    // Fall 1: Einzelne E-Mail wurde übergeben → Willkommens-Mail nur an diese Person
+    if (body.email && typeof body.email === 'string') {
+      emails = [body.email]
+    } 
+    // Fall 2: Kein Parameter → klassischer Bulk-Modus (alle aus DB)
+    else {
+      const [rows] = await pool.execute('SELECT email FROM privacy_audit_emails') as [Array<{ email: string }>, any]
+      if (rows.length === 0) {
+        return NextResponse.json({ message: 'No recipients found' })
+      }
+      emails = rows.map(r => r.email)
+    }
 
     // ────────────────────────────────────────────────
     // OVERHAULED EMAIL TEMPLATE (ENGLISH TRIPWIRE)
