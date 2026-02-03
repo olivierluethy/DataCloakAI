@@ -68,11 +68,12 @@ export function Header() {
             </button>
 
             <Button
-              onClick={scrollToEarlyAccess}
-              className="cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              Get Early Access
-            </Button>
+  onClick={scrollToEarlyAccess}
+  className="cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90"
+>
+  Claim Early Access
+</Button>
+
           </nav>
 
           {/* Mobile Controls */}

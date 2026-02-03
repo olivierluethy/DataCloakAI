@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button"
 import { PurchaseNotification } from "@/components/purchase-notification"
 import { InternalAIChallengeSection } from "@/components/internal-aichallenge-section"
 import { PostPurchaseTrustSection } from "@/components/after-payment-section"
-import { HowItWorksSection } from "@/components/how-it-works"
+import { WorkflowSection } from "@/components/how-it-works"
 
 export default function Home() {
   const [showExitIntent, setShowExitIntent] = useState(false)
@@ -99,7 +99,7 @@ export default function Home() {
       <WhySection />
       <TargetAudienceSection />
       <FAQSection />
-      <HowItWorksSection />
+      <WorkflowSection />
       <EarlyAccessSection />
       <DisclaimerSection />
       <PrivacyTrustSection />

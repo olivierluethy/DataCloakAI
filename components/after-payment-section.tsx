@@ -10,28 +10,30 @@ import {
   Lock,
   Sparkles,
   Zap,
+  Gift,
+  Mail
 } from "lucide-react"
 
 export function PostPurchaseTrustSection() {
   const steps = [
     {
-      icon: Euro,
-      title: "Secure lifetime access",
-      description: "One-time payment of €39 — yours forever (no recurring charges)",
+      icon: Gift,
+      title: "Instant Advantage",
+      description: "Secure your 50% Lifetime Discount (€39 instead of €79) before the public launch. No hidden fees.",
     },
     {
-      icon: Clock,
-      title: "Receive early builds",
-      description: "Get access to new features & improvements as soon as they’re ready",
+      icon: Mail,
+      title: "Priority Access",
+      description: "Get exclusive early builds and influence the roadmap with your feedback before anyone else.",
     },
     {
       icon: ShieldCheck,
-      title: "Full refund until public launch",
-      description: "Not happy? Ask for 100% refund anytime before we go fully public",
+      title: "100% Risk-Free",
+      description: "Our Early Adopter Guarantee: Full refund anytime before the official v1.0 release. Zero friction.",
     },
   ]
 
-  // Floating icons — same style & density as in WhySection
+  // Floating icons — same style & density
   const floatingIcons = [
     { Icon: Lock,      size: 48, delay: 0,  duration: 24, x: -140, y: -100 },
     { Icon: Sparkles,  size: 56, delay: 6,  duration: 28, x: 120,  y: -140 },
@@ -42,78 +44,33 @@ export function PostPurchaseTrustSection() {
   ]
 
   return (
-    <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-background">
-      {/* Subtle grid background — identical to WhySection */}
+    <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden bg-black/20">
+      {/* Subtle grid background */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:80px_80px] animate-pulse-slow" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:80px_80px]" />
       </div>
 
-      {/* Soft accent glows — same positioning & opacity */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{ y: [0, -40, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-10 -left-20 w-96 h-96 bg-accent/8 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ y: [0, 40, 0] }}
-          transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-10 -right-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl"
-        />
-      </div>
-
-      <div className="mx-auto max-w-5xl relative z-10">
-        <div className="space-y-16">
+      <div className="mx-auto max-w-6xl relative z-10">
+        <div className="space-y-20">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center space-y-5"
+            className="text-center space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-accent/30 border border-accent/30 text-white text-sm font-medium shadow-sm">
-  <CheckCircle2 className="w-4 h-4 text-white" />
-  Zero risk • Lifetime deal
-</div>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold uppercase tracking-[0.2em]">
+              <Sparkles className="w-4 h-4" /> Your Early Adopter Journey
+            </div>
 
-
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-              What happens after you pay?
+            <h2 className="text-4xl sm:text-6xl font-black tracking-tight text-white">
+              The Path to <span className="text-accent italic">Zero-Risk</span> Privacy
             </h2>
 
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-              No subscription. No lock-in. Just lifetime access — and peace of mind.
+            <p className="text-xl text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
+              Joining the waitlist or securing early access is just the beginning. Here is how we protect your trust.
             </p>
           </motion.div>
-
-          {/* Floating icons overlay — same behavior as WhySection */}
-          <div className="absolute inset-0 pointer-events-none hidden md:block">
-            {floatingIcons.map(({ Icon, size, delay, duration, x, y }, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: [0.05, 0.15, 0.05],
-                  x: [x, x + 100, x],
-                  y: [y, y + 140, y],
-                  rotate: [-6, 6, -6],
-                }}
-                transition={{
-                  opacity: { duration: 10, repeat: Infinity },
-                  x: { duration, repeat: Infinity, ease: "linear", delay },
-                  y: { duration, repeat: Infinity, ease: "easeInOut", delay },
-                  rotate: { duration: duration * 1.3, repeat: Infinity, ease: "easeInOut" },
-                }}
-                className="absolute left-1/2 top-1/2"
-              >
-                <Icon
-                  className={`w-${size/4} h-${size/4} text-accent/40`}
-                  style={{ filter: "drop-shadow(0 0 18px rgba(var(--accent-rgb), 0.35))" }}
-                />
-              </motion.div>
-            ))}
-          </div>
 
           {/* Three trust cards */}
           <div className="grid md:grid-cols-3 gap-8 relative z-10">
@@ -126,38 +83,19 @@ export function PostPurchaseTrustSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, delay: index * 0.15 }}
-                  whileHover={{ y: -16, scale: 1.05 }}
-                  className="group relative overflow-hidden rounded-3xl border border-border bg-card/90 backdrop-blur-md p-8 shadow-xl transition-all duration-700 hover:border-accent/60 hover:shadow-2xl hover:shadow-accent/25"
+                  className="group relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-white/[0.03] backdrop-blur-xl p-10 transition-all duration-500 hover:border-accent/40 hover:bg-white/[0.06]"
                 >
-                  {/* Glimmer shine on hover — identical to WhySection */}
-                  <motion.div
-                    className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.9, ease: "easeOut" }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent skew-x-12" />
-                  </motion.div>
+                  {/* Icon container */}
+                  <div className="relative w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                    <Icon className="w-8 h-8 text-accent" />
+                    <div className="absolute inset-0 rounded-2xl bg-accent/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
 
-                  {/* Icon container with pulse glow */}
-                  <motion.div
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    transition={{ duration: 0.5 }}
-                    className="relative w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mb-6"
-                  >
-                    <Icon className="w-8 h-8 text-accent transition-transform duration-500 group-hover:scale-125" />
-                    <motion.div
-                      animate={{ scale: [1, 1.4, 1] }}
-                      transition={{ duration: 2.5, repeat: Infinity }}
-                      className="absolute inset-0 rounded-2xl bg-accent/20 blur-xl"
-                    />
-                  </motion.div>
-
-                  <h3 className="text-2xl font-bold text-foreground group-hover:text-accent transition-colors duration-400 mb-3">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-accent transition-colors">
                     {step.title}
                   </h3>
 
-                  <p className="text-base text-muted-foreground leading-relaxed group-hover:text-foreground/90 transition-colors duration-400">
+                  <p className="text-white/50 leading-relaxed text-sm">
                     {step.description}
                   </p>
                 </motion.div>
@@ -170,14 +108,17 @@ export function PostPurchaseTrustSection() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.7 }}
-            className="mt-16 text-center"
+            className="text-center pt-10"
           >
-            <p className="text-xl font-medium text-white italic inline-flex items-center gap-3">
-  No risk. Lifetime deal. You literally cannot lose.
-  <ArrowRight className="w-5 h-5" />
-</p>
-
+            <div className="inline-flex items-center gap-4 p-1 pr-6 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group cursor-pointer">
+              <div className="px-4 py-2 rounded-full bg-accent text-accent-foreground text-xs font-black uppercase tracking-widest">
+                Safe Choice
+              </div>
+              <p className="text-sm font-medium text-white/80 flex items-center gap-2">
+                No risk. Just the ultimate privacy advantage.
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>
