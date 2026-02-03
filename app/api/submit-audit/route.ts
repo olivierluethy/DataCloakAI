@@ -58,7 +58,7 @@ export async function POST(request: Request) {
             <div style="background-color: #f9f9f9; padding: 20px; border-radius: 12px; border-left: 4px solid #000;">
               <p style="margin: 0; font-size: 18px; font-weight: bold;">Lifetime License for only €39</p>
               <p style="margin: 5px 0; color: #666; font-size: 14px;">Instead of €79 annually. Pay once, use forever.</p>
-              <a href="https://buy.stripe.com/28EfZi6HA3V3ets5GygA800", "_blank" style="display: inline-block; background-color: #000; color: #fff; padding: 12px 25px; text-decoration: none; border-radius: 8px; margin-top: 15px; font-weight: bold;">Claim My Lifetime Deal Now →</a>
+              <a href="https://buy.stripe.com/28EfZi6HA3V3ets5GygA800" target="_blank" style="display: inline-block; background-color: #000; color: #fff; padding: 12px 25px; text-decoration: none; border-radius: 8px; margin-top: 15px; font-weight: bold;">Claim My Lifetime Deal Now →</a>
             </div>
 
             <p style="font-size: 13px; color: #999; margin-top: 15px;">
