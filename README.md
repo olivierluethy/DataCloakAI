@@ -1,30 +1,33 @@
-# DataCloak AI landing page
+# DataCloak AI
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+Marketing and early-access landing site for **DataCloak AI**, a concept for anonymizing
+sensitive data before it is sent to AI models (GDPR-focused). Built as a conversion-oriented
+one-pager with a blog, payment flow, and lead capture.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/janek-rubins-projects/v0-data-cloak-ai-landing-page)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/syleiElqC2A)
+## Features
 
-## Overview
+- Single-page landing built from modular sections (hero, problem, solution, FAQ, pricing,
+  early-access, trust/privacy, final CTA) with an exit-intent dialog and scarcity counter.
+- MDX-powered blog (`content/blog/`) covering data anonymization, GDPR/AI compliance, and
+  preventing data leaks, rendered through `next-mdx-remote`.
+- Early-access / checkout flow using **Stripe** and email delivery via **Nodemailer**.
+- Scroll- and section-view analytics, plus Vercel Analytics.
+- Legal pages (privacy policy, terms of service) and a generated `sitemap.ts`.
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+## Tech
 
-## Deployment
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
+- **Tailwind CSS 4** with Radix UI primitives (shadcn/ui-style components)
+- **Stripe**, **Nodemailer**, **mysql2**
+- MDX (`@next/mdx`, `next-mdx-remote`, `gray-matter`)
 
-Your project is live at:
+## Run
 
-**[https://vercel.com/janek-rubins-projects/v0-data-cloak-ai-landing-page](https://vercel.com/janek-rubins-projects/v0-data-cloak-ai-landing-page)**
+```bash
+npm install   # or pnpm install
+npm run dev   # http://localhost:3000
+```
 
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.app/chat/syleiElqC2A](https://v0.app/chat/syleiElqC2A)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Environment variables (Stripe keys, SMTP credentials, database connection) are required for the
+payment and email flows; the landing page itself renders without them. Build with `npm run build`
+and serve with `npm start`.
